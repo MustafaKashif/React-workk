@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
+import ProductDetails from "./ProductDetails";
 
 const ProductCard = (props) => {
   const { Name, Price, pid, image, Description } = props;

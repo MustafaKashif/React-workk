@@ -3,8 +3,13 @@ import { useForm } from "react-hook-form";
 import { addProducts } from "../Services/firebaseServices";
 import ImageComp from "./ImageComp";
 import "../App.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 
 const AddProductForm = () => {
+  const Navigate = useNavigate()
   const { register, handleSubmit, reset } = useForm();
   const submitHandler = async (data) => {
     const Products = await addProducts(data);
@@ -21,6 +26,7 @@ const AddProductForm = () => {
         })}
       />
       <br />
+      <br/>
       <input
         type="number"
         placeholder="Enter Product's Price : "
@@ -29,6 +35,16 @@ const AddProductForm = () => {
         })}
       />
       <br />
+      <br/>
+      <input
+        type="number"
+        placeholder="Enter Product's Quantity : "
+        {...register("Quantity", {
+          required: { value: true, message: "Quantity is Required" },
+        })}
+      />
+      <br />
+      <br/>
       <input
         type="textarea"
         placeholder="Enter Description"
@@ -37,9 +53,11 @@ const AddProductForm = () => {
         })}
       />
       <br />
+      <br/>
       <ImageComp/>
       <br />
-      <button type="submit">Add Product</button>
+      <br/>
+      <Button variant = "outline-primary" type="submit" onClick={Navigate("/adminDashboard")}>Add Product</Button>
     </form>
   );
 };

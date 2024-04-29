@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../Lib/firebaseConfig";
+import { Button } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ImageComp = () => {
   const [Image, setImage] = useState(null);
@@ -39,13 +41,15 @@ const ImageComp = () => {
         }}
       />
       <br />
-      <button
+      <br/>
+      <Button
+      variant="outline-info"
         onClick={() => {
           ImageUploading(Image);
         }}
       >
         Upload
-      </button>
+      </Button>
     </>
   );
 };
